@@ -7,7 +7,7 @@ Run on macos
 deploy.sh
 ```
 
-Run on macos
+Run on another os
 --------
 
 ```sh
