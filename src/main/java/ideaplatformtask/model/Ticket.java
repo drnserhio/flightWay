@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 @AllArgsConstructor
 @Data
@@ -29,5 +32,13 @@ public class Ticket implements Serializable {
         LocalDateTime dep = LocalDateTime.parse(departure_date + " " + departure_time, dateTimeFormatter);
         LocalDateTime arrvl = LocalDateTime.parse(arrival_date + " " + arrival_time, dateTimeFormatter);
         return Duration.between(dep, arrvl);
+    }
+
+    public Duration getTime() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("H:mm");
+        LocalTime dep = LocalTime.parse(departure_time, dateTimeFormatter);
+        LocalTime arrvl = LocalTime.parse(arrival_time, dateTimeFormatter);
+        return Duration.between(dep, arrvl);
+
     }
 }
